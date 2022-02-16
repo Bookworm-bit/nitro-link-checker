@@ -12,8 +12,8 @@ print("Press Ctrl-C to quit.")
 
 while True:
     try:
-        for i in range(randint(10,16)):
-            c = random.choice(chara)
+        for i in range(randint(10,16):
+            c = choice(chara)
             if chara.index(c) < 25:
                 if randint(0, 1) == 1):
                     link.append(str(c).capitalize())
