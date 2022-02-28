@@ -13,29 +13,33 @@ print("Press Ctrl-C to quit.")
 
 while True:
     try:
-        for i in range(randint(10,16):
+        for i in range(randint(10,16)):
             c = choice(chara)
             if chara.index(c) < 25:
-                if randint(0, 1) == 1):
+                if randint(0, 1) == 1:
                     link.append(str(c).capitalize())
                 else:
                     link.append(c)
             else:
                 link.append(c)
         code = ''.join(link)
-        api = requests.get(f'https://discord.com/api/v8/entitlements/gift-codes/{code}')
+        api = requests.get(f'https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true')
         if (int(api.status_code) == 200):
             fout.write(f'https://discord.gift/{code} is valid!\n')
             valid += 1
         if (int(api.status_code) == 429):
-            fout.write("Too many requests! https://discord.gift/{code}\n")
+            fout.write(f'Too many requests! https://discord.gift/{code}\n')
             invalid += 1
+	        code = []
+            sleep(1)
         else:
             fout.write(f'https://discord.gift/{code} is invalid!\n')
             invalid += 1
-            
+            code = []
+            sleep(1)
     except KeyboardInterrupt:
         break
+
 
 fout.close()
 
